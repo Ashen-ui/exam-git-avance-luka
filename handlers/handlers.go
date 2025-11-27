@@ -18,10 +18,6 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 	tmpl.Execute(w, books)
 }
 
-func ContactHandler(w http.ResponseWriter, r *http.Request) {
-	return
-}
-
 func BookHandler(w http.ResponseWriter, r *http.Request) {
 	idStr := r.URL.Query().Get("id")
 
@@ -50,4 +46,9 @@ func BookHandler(w http.ResponseWriter, r *http.Request) {
 
 	tmpl := template.Must(template.ParseFiles("templates/book.html"))
 	tmpl.Execute(w, selected)
+}
+
+func ContactHandler(w http.ResponseWriter, r *http.Request) {
+	tmpl := template.Must(template.ParseFiles("templates/contact.html"))
+	tmpl.Execute(w, nil)
 }
